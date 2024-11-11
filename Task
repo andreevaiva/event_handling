@@ -1,0 +1,46 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Main{
+
+    public static void main(String[] args) {
+
+
+        JFrame frame = new JFrame("clicker game");
+        JButton button = new JButton("click me");
+        JButton reset = new JButton("reset");
+        JLabel label = new JLabel("Number of clicks:");
+        JLabel showClicks = new JLabel("0");
+
+        frame.setLayout(null);
+        frame.setSize(300,300);
+        button.setBounds(100, 60, 100, 100);
+        reset.setBounds(100, 160, 100, 100);
+        label.setBounds(100, 10, 120, 20);
+        showClicks.setBounds(230, 10, 20, 20);
+        frame.add(showClicks);
+        frame.add(button);
+        frame.add(reset);
+        frame.add(label);
+
+        frame.setVisible(true);
+
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int counter = Integer.parseInt(showClicks.getText());
+                counter++;
+                showClicks.setText(String.valueOf(counter));
+            }
+        });
+
+        reset.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+               int counter = Integer.parseInt(showClicks.getText());
+               counter=0;
+               showClicks.setText(String.valueOf(counter));
+           }
+        });
+    }
+}
